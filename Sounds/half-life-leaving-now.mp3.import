@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/half-life-leaving-now.mp3-c586680febf10e8ec9016bb190c0b1c9.mp3str"
+
+[deps]
+
+source_file="res://Sounds/half-life-leaving-now.mp3"
+dest_files=[ "res://.import/half-life-leaving-now.mp3-c586680febf10e8ec9016bb190c0b1c9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

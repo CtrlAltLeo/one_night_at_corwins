@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://hidingPlace.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/interactable.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 1.61538, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="hidingPlace" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="hitbox" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23514, 0 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="." index="1"]
+
+[node name="Camera" type="Camera" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869292, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 0.177271, 0, 0, 0, 1, 0, 2.78556, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="hidingZone" type="Spatial" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+
+[connection signal="on_interact_success" from="." to="." method="_on_hidingPlace_on_interact_success"]
