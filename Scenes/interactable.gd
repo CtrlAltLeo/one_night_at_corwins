@@ -2,6 +2,8 @@ extends Spatial
 
 var player_path = ""
 var noise_maker_path = ""
+var inventory = ""
+var monolog = ""
 
 signal make_noise(pos)
 signal share_pos(pos)
@@ -15,6 +17,8 @@ func _ready():
 	
 	player_path = get_parent().get_node("player")
 	noise_maker_path = get_parent().get_node("NoiseSystem")
+	inventory = get_parent().get_node("Inventory")
+	monolog = get_parent().get_node("monologSystem")
 
 func _process(delta):
 	pass

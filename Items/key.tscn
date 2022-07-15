@@ -19,3 +19,5 @@ shape = SubResource( 1 )
 transform = Transform( 0.449559, 0, 0, 0, 1, 0, 0, 0, 0.422063, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
+
+[connection signal="on_interact_success" from="." to="." method="_on_key_on_interact_success"]
