@@ -15,6 +15,7 @@ func _on_hidingPlace_on_interact_success():
 	
 	if player_hiding == false:	
 		player_path.connect("share_cam_pos", self, "move_cam_to_player")
+		#player_path.connect("init_interact", self, "unhide")
 		
 		
 		#This will freeze and hide the payer, and share their cords
@@ -49,11 +50,12 @@ func move_cam_to_player(pos,rot):
 	$Tween.start()
 	
 func unhide():
+	print("unhide from object")
 	$Camera.current = false
 	emit_signal("unhide_player")
 	
 	player_path.disconnect("share_cam_pos", self, "move_cam_to_player")
-	
+	player_path.disconnect("init_interact", self, "unhide")
 	player_hiding = false
 	
 	

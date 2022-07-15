@@ -144,12 +144,12 @@ func make_noise():
 	pass
 	
 func hide_player():
-	print("hiding!")
+	print("hiding player")
 	hiding = true
 	emit_signal("hide")
 
 func show_player():
-	print("unhide")
+	print("unhide player")
 	hiding = false
 	emit_signal("unhide")
 
@@ -165,9 +165,11 @@ func test():
 	
 func freeze():
 	frozen = true
+	$Camera/interact.enabled = false
 	
 func unfreeze():
 	frozen = false
+	$Camera/interact.enabled = true
 	
 func set_cam_current():
 	camera.current = true

@@ -210,6 +210,10 @@ func add_sentry_point(pos):
 	sentry_points.append(pos)
 	#print(sentry_points.size())
 	
+func cleanup_sentry_points():
+	
+	sentry_points.remove(int(rand_range(0, sentry_points.size())))
+	
 
 func playerview_small():
 	player_view_distance = 20

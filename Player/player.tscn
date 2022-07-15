@@ -28,7 +28,6 @@ collide_with_bodies = false
 
 [node name="SpotLight" type="SpotLight" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.631317, 0.211347 )
-light_color = Color( 0.909804, 0.831373, 0, 1 )
 light_energy = 3.0
 spot_range = 21.536
 spot_angle = 33.1268
