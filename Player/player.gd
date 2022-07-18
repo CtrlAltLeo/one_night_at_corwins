@@ -33,6 +33,12 @@ signal unhide
 
 signal test
 
+signal player_caught
+
+var paused = false
+signal pause
+signal unpause
+
 onready var interactRaycast = $Camera/interact
 onready var camera = $Camera
 
@@ -82,6 +88,18 @@ func _process(delta):
 			flashlight_off()
 		else:
 			flashlight_on()
+			
+	if Input.is_action_just_pressed("TAB"):
+		if paused:
+			paused = false
+			emit_signal("unpause")
+			unfreeze()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			paused = true
+			emit_signal("pause")
+			freeze()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _physics_process(delta):
 	
@@ -227,3 +245,16 @@ func player_speed_fast():
 func _on_flashlight_battery_timeout():
 	if flashlight_active:
 		update_flashlight()
+		
+		
+func get_caught():
+	freeze()
+	print("they got me!")
+	emit_signal("player_caught")
+	
+	
+
+
+func _on_grab_hitbox_body_entered(body):
+	if body.name == "chicken":
+		get_caught()

@@ -9,14 +9,21 @@ var at_end = false
 
 var spicy = false
 
+onready var label = $Control/Label
+
 signal text_over
 signal new_text
+
+
+
+
 
 func show_text():
 	$can_see.start()
 	
 func hide_text():
 	reset_box()
+	label.queue_free()
 
 
 func new_message(text, spicy:=false):
@@ -24,7 +31,7 @@ func new_message(text, spicy:=false):
 	reset_box()
 	
 	active_text = text
-	$Control/Label.text = active_text
+	label.text = active_text
 	$text_show.wait_time = len(text) / 4
 	$text_show.start()
 	
@@ -36,8 +43,15 @@ func new_message(text, spicy:=false):
 	
 
 func reset_box():
+	
+	$Control.add_child(Label.new())
+	
+	label = $Control.get_child(0)
+	
+	edit_label()
+
 	text_view = 0
-	$Control/Label.visible_characters = 0
+	label.visible_characters = 0
 	at_end = false
 	spicy = false
 	
@@ -56,13 +70,20 @@ func _on_text_show_timeout():
 
 func _on_can_see_timeout():
 	text_view += 1
-	$Control/Label.visible_characters = text_view
+	label.visible_characters = text_view
 	
 	if spicy:
-		$Control/Label.uppercase = !$Control/Label.uppercase
+		label.uppercase = !label.uppercase
 	
 	if check_end() == false:
 		$can_see.start()
 	else:
 		emit_signal("text_over")
+		
+func edit_label():
+	label.align = label.ALIGN_CENTER
+	label.anchor_right = 1
+	label.anchor_bottom = 1 
+	label.theme = load("res://UI/aodanTHeme.tres")
+	label.autowrap = true
 		

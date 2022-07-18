@@ -23,9 +23,13 @@ var can_see_player = false
 
 var player_hide = false
 
+var frozen = false
+
 signal spot_player
 signal at_goto
 signal mode_change
+
+signal catch_player
 
 func _ready():
 	init_sentry_points()
@@ -35,6 +39,10 @@ func _process(delta):
 	$RichTextLabel.text = str(mode)
 	
 func do_modes():
+	
+	if frozen:
+		return
+	
 	emit_signal("mode_change")
 	
 	disconnect("at_goto", self, "midchase_player_check")
@@ -77,11 +85,16 @@ func init_sentry_points():
 	
 func _physics_process(delta):
 	
+	if frozen:
+		return
+	
 	move()
 	
 	
 
 func move():
+	
+	rotate_mesh()
 
 	var dir = target - self.translation
 	dir = dir.normalized()
@@ -140,7 +153,6 @@ func make_new_path(target):
 
 func _on_ai_tick_timeout():
 	
-#	print(translation.distance_to(player_pos))
 	
 	if do_player_check():
 		emit_signal("spot_player")
@@ -216,7 +228,7 @@ func cleanup_sentry_points():
 	
 
 func playerview_small():
-	player_view_distance = 20
+	player_view_distance = 10
 	
 func playerview_big():
 	player_view_distance = 60
@@ -228,5 +240,30 @@ func set_speed_normal():
 func set_speed_increasing():
 	print("Faster faster!")
 	speed *= 1.07
+	
+
+func on_player_death():
+	
+	queue_free()
+	
+	
+func freeze():
+	frozen = true
+	
+func unfreeze():
+	frozen = false
+
+
+func rotate_mesh():
+	
+	print((target - translation).normalized())
+	
+	return
+	
+	$chickenV2.rotation.y = translation.angle_to(target)
+
+	
+		
+	
 	
 
