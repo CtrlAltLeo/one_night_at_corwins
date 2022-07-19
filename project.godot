@@ -14,6 +14,10 @@ config/name="OneNightAtCorwins"
 run/main_scene="res://Maps/world.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
+
 [input]
 
 W={

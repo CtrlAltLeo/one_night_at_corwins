@@ -6,6 +6,8 @@ var noise_level = 0
 
 var speed = 10
 
+var sanity = 100
+
 var flashlight_level = 100
 var flashlight_noise_level = 0
 var flashlight_active = true
@@ -227,11 +229,13 @@ func flashlight_on():
 	flashlight_active = true
 	$Camera/SpotLight.light_energy = flashlight_level * 0.03
 	emit_signal("light_on")
+	$sanity_time.stop()
 	
 func flashlight_off():
 	flashlight_active = false
 	$Camera/SpotLight.light_energy = 0
 	emit_signal("light_off")
+	$sanity_time.start()
 
 func player_speed_slow():
 	speed = 6
@@ -258,3 +262,26 @@ func get_caught():
 func _on_grab_hitbox_body_entered(body):
 	if body.name == "chicken":
 		get_caught()
+
+
+func _on_sanity_time_timeout():
+	sanity -= 1
+	
+	if sanity < 0:
+		sanity = 0
+	
+	if flashlight_active == false:
+		$sanity_time.start()
+		
+
+func do_sanity():
+	
+	if sanity < 50 and sanity >= 20:
+		emit_signal("make_soft_noise", self.translation)
+		
+	if sanity < 20:
+		emit_signal("make_loud_noise", self.translation)
+	
+
+func _on_heartbeat_timer_timeout():
+	do_sanity()

@@ -37,8 +37,14 @@ spot_range = 21.536
 spot_angle = 33.1268
 
 [node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.5
+margin_top = -13.0
+margin_right = 18.5
+margin_bottom = 13.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,5 +76,14 @@ autostart = true
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0122439, 1.55994, -0.0965819 )
 shape = SubResource( 3 )
 
+[node name="sanity_time" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="heartbeat_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="flashlight_battery" to="." method="_on_flashlight_battery_timeout"]
 [connection signal="body_entered" from="grab_hitbox" to="." method="_on_grab_hitbox_body_entered"]
+[connection signal="timeout" from="sanity_time" to="." method="_on_sanity_time_timeout"]
+[connection signal="timeout" from="heartbeat_timer" to="." method="_on_heartbeat_timer_timeout"]

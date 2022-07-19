@@ -1,28 +1,33 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Chicken/chicken_model/chickenV2.glb" type="PackedScene" id=1]
+[ext_resource path="res://Chicken/chicken_model/chicken_controller.gd" type="Script" id=2]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=12]
 albedo_color = Color( 1, 0, 0, 1 )
 
-[sub_resource type="AnimationNodeAnimation" id=1]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeBlendTree" id=2]
-graph_offset = Vector2( -404, 8.5 )
-nodes/Animation/node = SubResource( 1 )
-nodes/Animation/position = Vector2( 0, 60 )
+[sub_resource type="AnimationNodeBlendTree" id=14]
+graph_offset = Vector2( -168, 63 )
+nodes/Animation/node = SubResource( 13 )
+nodes/Animation/position = Vector2( -20, 120 )
 node_connections = [ "output", 0, "Animation" ]
 
 [node name="chickenV2" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
 
 [node name="Cylinder" parent="Armature" index="0"]
 visible = false
 
 [node name="Eyes" parent="Armature/Skeleton" index="1"]
-material/0 = SubResource( 3 )
+material/0 = SubResource( 12 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+method_call_mode = 1
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="5"]
-tree_root = SubResource( 2 )
+tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
 active = true

@@ -94,7 +94,6 @@ func _physics_process(delta):
 
 func move():
 	
-	rotate_mesh()
 
 	var dir = target - self.translation
 	dir = dir.normalized()
@@ -107,6 +106,8 @@ func move():
 	
 	
 func next_path():
+	
+	rotate_mesh()
 	
 	if pathRank + 1 == path.size():
 
@@ -184,6 +185,11 @@ func set_mode_chase():
 	set_mode(2)
 	make_new_path(player_pos)
 	
+
+func set_mode_wait():
+	set_mode(3)
+	$wait_timer.start()
+	
 	
 	
 #Try and combine thesee two functions
@@ -208,7 +214,7 @@ func midchase_player_check():
 	if do_player_check():
 		emit_signal("spot_player")
 	else:
-		set_mode_goto(player_pos)
+		set_mode_wait()
 		
 
 func player_hiding():
@@ -255,15 +261,8 @@ func unfreeze():
 
 
 func rotate_mesh():
-	
-	print((target - translation).normalized())
-	
-	return
-	
-	$chickenV2.rotation.y = translation.angle_to(target)
+	pass
 
-	
-		
-	
-	
 
+func _on_wait_timer_timeout():
+	set_mode_sentry()

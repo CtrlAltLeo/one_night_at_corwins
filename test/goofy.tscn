@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="goofy" type="Spatial"]
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 256, 256 )
+
+[node name="Camera" type="Camera" parent="Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19958, 1.28883, 0 )
+current = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.28556 )
+current = true
