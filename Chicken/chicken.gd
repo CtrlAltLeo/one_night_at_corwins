@@ -74,7 +74,7 @@ func do_modes():
 	
 	# wait mode
 	if mode == 3:
-		pass
+		$ai_tick.set_paused(false)
 		
 
 func init_sentry_points():
@@ -153,7 +153,6 @@ func make_new_path(target):
 	
 
 func _on_ai_tick_timeout():
-	
 	
 	if do_player_check():
 		emit_signal("spot_player")
@@ -261,7 +260,10 @@ func unfreeze():
 
 
 func rotate_mesh():
-	pass
+	var velocity = target - translation
+	
+	var lookdir = atan2(velocity.x, velocity.z)
+	$chickenV2.rotation.y = lookdir
 
 
 func _on_wait_timer_timeout():

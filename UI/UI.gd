@@ -48,3 +48,5 @@ func _on_quit_pressed():
 func _on_Inventory_share_key_texts(array):
 	key_textures = array
 	print(key_textures)
+
+
