@@ -1,0 +1,195 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/bloodlust3d.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/7-lightning-bolt-jim-reed-photographyscience-photo-library-3983396892-removebg-preview.png" type="Texture" id=2]
+[ext_resource path="res://UI/PhotoFunia-1658418625.jpg" type="Texture" id=3]
+[ext_resource path="res://UI/main_menu.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_color = Color( 1, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "lightnightStrike"
+length = 1.005
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhotoFunia-1658418625:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.835294, 0.694118, 0.694118, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.37842
+margin_top = 2.37842
+margin_right = 2.37842
+margin_bottom = 2.37842
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PhotoFunia-1658418625" type="Sprite" parent="."]
+modulate = Color( 0.835294, 0.694118, 0.694118, 1 )
+position = Vector2( 509.037, 314.817 )
+scale = Vector2( 0.86343, 0.86343 )
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = -63.124
+margin_right = 104.0
+margin_bottom = 112.876
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" type="Button" parent="VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Play"
+
+[node name="options" type="Button" parent="VBoxContainer"]
+margin_top = 60.0
+margin_right = 208.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Options"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+margin_top = 120.0
+margin_right = 208.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -300.0
+margin_top = 38.1637
+margin_right = 300.0
+margin_bottom = 218.164
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+text = "One Night At Corwin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -20.1463, 130.016 )
+rotation = 2.58314
+texture = ExtResource( 2 )
+energy = 3.0
+mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/lightnightStrike = SubResource( 3 )
+anims/play = SubResource( 4 )
+
+[node name="lightningTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.581
+margin_top = -70.8539
+margin_right = 114.419
+margin_bottom = 81.1461
+window_title = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spencer_mode" type="CheckBox" parent="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -59.5
+margin_top = -56.7032
+margin_right = 59.5
+margin_bottom = -32.7032
+text = "Spencer Mode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WindowDialog"]
+margin_right = 121.0
+margin_bottom = 14.0
+text = "Mouse Senseitivity"
+
+[node name="LineEdit" type="LineEdit" parent="WindowDialog/Label"]
+margin_left = 89.5247
+margin_top = 36.0217
+margin_right = 147.525
+margin_bottom = 60.0217
+text = ".2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 503.419, 0 )
+amount = 600
+lifetime = 3.5
+speed_scale = 2.0
+emission_shape = 2
+emission_rect_extents = Vector2( 512, 1 )
+angle = 229.6
+scale_amount = 2.0
+scale_amount_random = 0.2
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="lightningTimer" to="." method="_on_lightningTimer_timeout"]
+[connection signal="toggled" from="WindowDialog/spencer_mode" to="." method="_on_spencer_mode_toggled"]
+[connection signal="text_changed" from="WindowDialog/Label/LineEdit" to="." method="_on_LineEdit_text_changed"]

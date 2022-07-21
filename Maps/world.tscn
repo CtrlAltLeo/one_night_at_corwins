@@ -1,12 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/monologSystem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/part.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/icons/muffler.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/icons/Yellow_key_1.png" type="Texture" id=6]
 [ext_resource path="res://Chicken/chicken.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Maps/Navigation.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/NoiseSystem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://modesl/wallsMeshLib.meshlib" type="MeshLibrary" id=10]
+[ext_resource path="res://Items/key.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Maps/world.gd" type="Script" id=12]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/scene.tscn" type="PackedScene" id=14]
 
@@ -26,6 +31,7 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 [sub_resource type="Environment" id=4]
 
 [node name="world" type="Spatial"]
+script = ExtResource( 12 )
 
 [node name="UI" parent="." instance=ExtResource( 13 )]
 
@@ -104,6 +110,16 @@ shape = SubResource( 3 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
 
+[node name="part" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2436, 3.92451, -69.4448 )
+part_name = "Muffler"
+part_texture = ExtResource( 4 )
+
+[node name="key" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77644, 0, -71.0263 )
+key_id = 1
+texture = ExtResource( 6 )
+
 [connection signal="restart" from="UI" to="gamestate_manager" method="restart_scene"]
 [connection signal="hide" from="player" to="chicken" method="player_hiding"]
 [connection signal="light_off" from="player" to="chicken" method="playerview_small"]
@@ -120,5 +136,5 @@ environment = SubResource( 4 )
 [connection signal="unpause" from="player" to="chicken" method="unfreeze"]
 [connection signal="new_loud_noise" from="NoiseSystem" to="chicken" method="set_mode_goto"]
 [connection signal="new_soft_noise" from="NoiseSystem" to="chicken" method="add_sentry_point"]
-[connection signal="share_key_texts" from="Inventory" to="UI" method="_on_Inventory_share_key_texts"]
+[connection signal="give_info" from="Inventory" to="UI" method="get_inventory_info"]
 [connection signal="catch_player" from="chicken" to="player" method="get_caught"]

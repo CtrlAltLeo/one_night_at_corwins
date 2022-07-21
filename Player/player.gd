@@ -45,6 +45,7 @@ onready var interactRaycast = $Camera/interact
 onready var camera = $Camera
 
 func _ready():
+	mouse_sense = Globals.mouse_sense
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _input(event):
@@ -285,3 +286,8 @@ func do_sanity():
 
 func _on_heartbeat_timer_timeout():
 	do_sanity()
+	
+func get_sanity_back():
+	sanity += 75
+	if sanity > 100:
+		sanity = 100

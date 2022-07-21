@@ -4,8 +4,9 @@ var keys = []
 var key_textures = []
 
 var parts = []
+var part_textures = []
 
-signal share_key_texts(array)
+signal give_info(key_textures, part_textures)
 
 
 func has_key(key_id):
@@ -25,11 +26,13 @@ func give_key(key, texture):
 	keys.append(key)
 	key_textures.append(texture)
 	print("Got key " + str(key))
-	share_key_textures()
+	give_ui_info()
 	
 	
-func give_part(part):
+func give_part(part, texture):
 	parts.append(part)
+	part_textures.append(texture)
+	give_ui_info()
 	
 func take_key(key):
 	keys.erase(key)
@@ -43,8 +46,8 @@ func print_inventory():
 	print(parts)
 	
 
-func share_key_textures():
-	emit_signal("share_key_texts", key_textures)
+func give_ui_info():
+	emit_signal("give_info", key_textures, part_textures)
 
 
 

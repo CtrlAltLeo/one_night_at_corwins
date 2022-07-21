@@ -4,6 +4,7 @@ signal quit_to_start
 signal restart
 
 var key_textures = []
+var part_textures = []
 
 
 
@@ -15,12 +16,20 @@ func open_pause_menu():
 		var text = TextureRect.new()
 		text.texture = t
 		$pause_menu/key_items.add_child(text)
+		
+	for p in part_textures:
+		var text = TextureRect.new()
+		text.texture = p
+		$pause_menu/part_items.add_child(text)
 	
 	$pause_menu.show()
 	
 func close_pause_menu():
 	
 	for c in $pause_menu/key_items.get_children():
+		c.queue_free()
+		
+	for c in $pause_menu/part_items.get_children():
 		c.queue_free()
 	
 	$pause_menu.hide()
@@ -44,9 +53,8 @@ func _on_quit_pressed():
 
 	
 
-
-func _on_Inventory_share_key_texts(array):
-	key_textures = array
-	print(key_textures)
+func get_inventory_info(key_text, part_text):
+	key_textures = key_text
+	part_textures = part_text
 
 
