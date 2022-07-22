@@ -46,6 +46,11 @@ func print_inventory():
 	print(parts)
 	
 
+func get_parts():
+	
+	return "parts"
+	
+
 func give_ui_info():
 	emit_signal("give_info", key_textures, part_textures)
 

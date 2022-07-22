@@ -5,12 +5,12 @@
 [ext_resource path="res://UI/PhotoFunia-1658418625.jpg" type="Texture" id=3]
 [ext_resource path="res://UI/main_menu.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 50
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 100
 outline_color = Color( 1, 0, 0, 1 )
 use_filter = true
@@ -81,7 +81,7 @@ __meta__ = {
 [node name="play" type="Button" parent="VBoxContainer"]
 margin_right = 208.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Play"
 
@@ -89,7 +89,7 @@ text = "Play"
 margin_top = 60.0
 margin_right = 208.0
 margin_bottom = 116.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Options"
 
@@ -97,7 +97,7 @@ text = "Options"
 margin_top = 120.0
 margin_right = 208.0
 margin_bottom = 176.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Quit"
 
@@ -108,7 +108,7 @@ margin_left = -300.0
 margin_top = 38.1637
 margin_right = 300.0
 margin_bottom = 218.164
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -120,6 +120,7 @@ __meta__ = {
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -20.1463, 130.016 )
 rotation = 2.58314
+enabled = false
 texture = ExtResource( 2 )
 energy = 3.0
 mode = 2

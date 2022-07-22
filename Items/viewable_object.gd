@@ -1,16 +1,25 @@
 extends "res://Scenes/interactable.gd"
 
+tool
+
 export (Texture) var image setget set_texture
 export (String) var view_text
 
 func set_texture(t):
-	
 	print("arg")
 	$Sprite3D.texture = t
 	image = t
 	
 func _ready():
 	$Sprite3D.texture = image
+	
+	
+func _process(delta):
+	
+	if Engine.editor_hint:
+		$Sprite3D.texture = image
+		
+	
 
 
 

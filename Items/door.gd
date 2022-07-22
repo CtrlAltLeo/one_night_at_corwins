@@ -1,8 +1,14 @@
 extends "res://Scenes/interactable.gd"
 
 
+export (Color) var door_color
+
 
 export var key_id = 0
+
+func _ready():
+	
+	$MeshInstance.get_surface_material(0).albedo_color = door_color
 
 func _on_door_on_interact_success():
 	

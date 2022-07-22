@@ -6,7 +6,7 @@ func restart_scene():
 	
 
 func quit_to_scene():
-	pass
+	get_tree().change_scene("res://UI/main_menu.tscn")
 
 
 

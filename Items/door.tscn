@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Items/door.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/interactable.tscn" type="PackedScene" id=2]
@@ -8,16 +8,28 @@ extents = Vector3( 1, 4.57059, 3.84484 )
 
 [sub_resource type="CubeMesh" id=2]
 
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+
+[sub_resource type="ConcavePolygonShape" id=4]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
 [node name="door" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+door_color = Color( 0.776471, 0.121569, 0.121569, 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="hitbox" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0454326, 5.31143, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="1"]
-transform = Transform( 0.3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.9, 0 )
+transform = Transform( 0.3, 0, 0, 0, 7.01553, 0, 0, 0, 7.43725, 0, 4.9, 0 )
 mesh = SubResource( 2 )
-material/0 = null
+material/0 = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody" index="0"]
+shape = SubResource( 4 )
 
 [connection signal="on_interact_success" from="." to="." method="_on_door_on_interact_success"]

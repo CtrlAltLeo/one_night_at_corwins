@@ -9,8 +9,7 @@ func _on_lightningTimer_timeout():
 
 
 func _on_play_pressed():
-	#Swtich to Cutsceen
-	pass # Replace with function body.
+	get_tree().change_scene("res://Maps/world.tscn")
 
 
 func _on_options_pressed():

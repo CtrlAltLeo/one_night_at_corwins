@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Rain On Rooftop.mp3-1c07ad5ba6d06d1e5ef991e26a561283.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Rain On Rooftop.mp3"
+dest_files=[ "res://.import/Rain On Rooftop.mp3-1c07ad5ba6d06d1e5ef991e26a561283.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
