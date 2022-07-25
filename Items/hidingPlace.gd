@@ -9,6 +9,8 @@ signal unhide_player
 
 func _on_hidingPlace_on_interact_success():
 	
+	return
+	
 	if player_hiding == true:
 		unhide()
 		return

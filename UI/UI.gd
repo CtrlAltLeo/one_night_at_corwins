@@ -19,7 +19,7 @@ func open_pause_menu():
 		
 	for p in part_textures:
 		var text = TextureRect.new()
-		text.texture = p
+		text.texture = load(p)
 		$pause_menu/part_items.add_child(text)
 	
 	$pause_menu.show()

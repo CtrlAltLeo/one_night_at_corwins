@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Endings/normalEnding.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Endings/image-removebg-preview (1).png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "words1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Aodan managed to escape from the chicken in the Golf. 
+However, the Golf is missing a hubcap, and for the rest of eternity he will never get a woman because of this flaw..", "Case File: #002
+Ending: No parts? L" ]
+}
+
+[node name="no_hubcap" instance=ExtResource( 1 )]
+words = "words1"
+
+[node name="Chicken3-1164764249-removebg-preview" parent="." index="0"]
+position = Vector2( 828.554, 168.101 )
+scale = Vector2( 0.646673, 0.646673 )
+
+[node name="WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview" parent="." index="1"]
+position = Vector2( 386.536, 378.597 )
+rotation = -0.264338
+scale = Vector2( 1.26139, 1.26139 )
+
+[node name="image-removebg-preview (1)" type="Sprite" parent="WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview" index="0"]
+position = Vector2( 66.0018, 68.9041 )
+scale = Vector2( 0.382037, 0.382037 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/words1 = SubResource( 1 )
+
+[node name="Label" parent="." index="3"]
+text = "Case File: #002
+Ending: No parts? L"

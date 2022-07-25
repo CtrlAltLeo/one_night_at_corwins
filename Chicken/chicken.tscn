@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Chicken/chicken.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/half-life-leaving-now.mp3" type="AudioStream" id=2]
@@ -1327,6 +1327,9 @@ nodes/Animation/node = SubResource( 13 )
 nodes/Animation/position = Vector2( -20, 120 )
 node_connections = [ "output", 0, "Animation" ]
 
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 1.59136, 1.93177, 1.90736 )
+
 [node name="chicken" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -1614,6 +1617,13 @@ anim_player = NodePath("../AnimationPlayer")
 wait_time = 3.0
 one_shot = true
 
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96088, 0 )
+shape = SubResource( 15 )
+
 [connection signal="spot_player" from="." to="." method="set_mode_chase"]
 [connection signal="timeout" from="ai_tick" to="." method="_on_ai_tick_timeout"]
 [connection signal="timeout" from="wait_timer" to="." method="_on_wait_timer_timeout"]
+[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]

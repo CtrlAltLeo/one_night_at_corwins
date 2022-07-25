@@ -118,9 +118,8 @@ margin_left = -300.5
 margin_top = 85.6229
 margin_right = 300.5
 margin_bottom = 232.623
-text = "You ate shit..
-
-Sorry"
+text = "Like, game over man..
+"
 align = 1
 
 [node name="tryagain" type="Button" parent="game_over"]

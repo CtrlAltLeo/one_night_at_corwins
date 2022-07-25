@@ -2,12 +2,11 @@ extends Spatial
 
 
 func _ready():
-	pass
-	
-	
+	spawn_parts()
+	$key_and_part_randomizer.spawn_keys()
 
 func spawn_keys():
 	pass
 	
 func spawn_parts():
-	pass
+	$key_and_part_randomizer.spawn_parts()

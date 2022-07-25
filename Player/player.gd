@@ -1,5 +1,7 @@
 extends KinematicBody
 
+var do_heartbeat = false
+
 var frozen = false
 
 var noise_level = 0
@@ -47,6 +49,7 @@ onready var camera = $Camera
 func _ready():
 	mouse_sense = Globals.mouse_sense
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	do_heartbeat = Globals.spencer_mode
 	
 func _input(event):
 	
@@ -70,6 +73,8 @@ func _input(event):
 		
 	
 func _process(delta):
+	
+	$Control/RichTextLabel.text = str(sanity)
 	
 	if Input.is_key_pressed(KEY_ESCAPE):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -266,6 +271,10 @@ func _on_grab_hitbox_body_entered(body):
 
 
 func _on_sanity_time_timeout():
+	
+	if do_heartbeat == false:
+		return
+	
 	sanity -= 1
 	
 	if sanity < 0:
@@ -285,6 +294,9 @@ func do_sanity():
 	
 
 func _on_heartbeat_timer_timeout():
+	
+	
+	
 	do_sanity()
 	
 func get_sanity_back():

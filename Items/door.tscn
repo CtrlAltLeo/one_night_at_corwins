@@ -32,4 +32,10 @@ material/0 = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody" index="0"]
 shape = SubResource( 4 )
 
+[node name="chicken_rebuff" type="Area" parent="." index="2"]
+
+[node name="CollisionShape2" type="CollisionShape" parent="chicken_rebuff" index="0"]
+transform = Transform( 0.3, 0, 0, 0, 7.01553, 0, 0, 0, 7.43725, 0, 4.9, 0 )
+shape = SubResource( 4 )
+
 [connection signal="on_interact_success" from="." to="." method="_on_door_on_interact_success"]

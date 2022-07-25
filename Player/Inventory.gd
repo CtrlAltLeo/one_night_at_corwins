@@ -48,7 +48,7 @@ func print_inventory():
 
 func get_parts():
 	
-	return "parts"
+	return parts
 	
 
 func give_ui_info():

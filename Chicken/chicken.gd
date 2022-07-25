@@ -268,3 +268,8 @@ func rotate_mesh():
 
 func _on_wait_timer_timeout():
 	set_mode_sentry()
+
+
+func _on_Area_area_entered(area):
+	if area.name == "chicken_rebuff":
+		set_mode_sentry()

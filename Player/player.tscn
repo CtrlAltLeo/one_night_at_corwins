@@ -62,6 +62,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+margin_left = -2.0
+margin_top = 37.0
+margin_right = 38.0
+margin_bottom = 77.0
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262414, 0 )
 visible = false
