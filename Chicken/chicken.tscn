@@ -1,12 +1,14 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Chicken/chicken.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/half-life-leaving-now.mp3" type="AudioStream" id=2]
-[ext_resource path="res://Sounds/agh_uT05NZS.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/chickenSpotsPlayer.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/half-life-right-way.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Chicken/chicken_model/Material_002.material" type="Material" id=5]
 [ext_resource path="res://Chicken/chicken_model/Material_001.material" type="Material" id=6]
 [ext_resource path="res://Chicken/chicken_model/chicken_controller.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/138071__daboy291__walking-footsteps-tennis-shoes-tile-floor-7.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/chicke_death1.mp3" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -1330,6 +1332,36 @@ node_connections = [ "output", 0, "Animation" ]
 [sub_resource type="BoxShape" id=15]
 extents = Vector3( 1.59136, 1.93177, 1.90736 )
 
+[sub_resource type="Animation" id=17]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("chase_music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -40.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("chase_music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -40.0 ]
+}
+
 [node name="chicken" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -1623,7 +1655,24 @@ one_shot = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96088, 0 )
 shape = SubResource( 15 )
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="chase_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -40.0
+
+[node name="music" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 17 )
+anims/fade_out = SubResource( 16 )
+
+[node name="frick_you_hunting" type="Timer" parent="."]
+wait_time = 40.0
+
 [connection signal="spot_player" from="." to="." method="set_mode_chase"]
 [connection signal="timeout" from="ai_tick" to="." method="_on_ai_tick_timeout"]
 [connection signal="timeout" from="wait_timer" to="." method="_on_wait_timer_timeout"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="animation_finished" from="music" to="." method="_on_music_animation_finished"]
+[connection signal="timeout" from="frick_you_hunting" to="." method="_on_frick_you_hunting_timeout"]

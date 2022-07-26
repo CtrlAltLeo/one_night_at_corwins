@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/heartbeatloop.mp3-5d1c445132c771e226254291879608c1.mp3str"
+
+[deps]
+
+source_file="res://Sounds/heartbeatloop.mp3"
+dest_files=[ "res://.import/heartbeatloop.mp3-5d1c445132c771e226254291879608c1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -7,6 +7,7 @@ func _on_theGolf_on_interact_success():
 	
 	if Globals.lore_points >= 8:
 		get_tree().change_scene("lore_ending")
+		return
 	
 	if inventory.get_parts().size() == 3:
 		get_tree().change_scene("res://Endings/normalEnding.tscn")
@@ -18,7 +19,7 @@ func _on_theGolf_on_interact_success():
 		
 	if inventory.get_parts().size() == 0:
 		monolog.new_message("You can't repair this yet!")
-		monolog.new_message(str(Globals.lore_points))
+		
 	
 	
 	

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/138071__daboy291__walking-footsteps-tennis-shoes-tile-floor-7.wav-f5b179518052b2152f5ddfd6233f01f5.sample"
+
+[deps]
+
+source_file="res://Sounds/138071__daboy291__walking-footsteps-tennis-shoes-tile-floor-7.wav"
+dest_files=[ "res://.import/138071__daboy291__walking-footsteps-tennis-shoes-tile-floor-7.wav-f5b179518052b2152f5ddfd6233f01f5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=true
+compress/mode=0

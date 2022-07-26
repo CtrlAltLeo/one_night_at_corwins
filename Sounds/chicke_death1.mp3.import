@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chicke_death1.mp3-5ac6c0da55563b64a22f4ba8a6f46f73.mp3str"
+
+[deps]
+
+source_file="res://Sounds/chicke_death1.mp3"
+dest_files=[ "res://.import/chicke_death1.mp3-5ac6c0da55563b64a22f4ba8a6f46f73.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

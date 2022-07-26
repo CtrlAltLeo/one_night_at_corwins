@@ -50,10 +50,13 @@ func do_modes():
 
 	#patrol mode
 	if mode == 0:
+		
+		$music.play("fade_out")
+		
 		set_speed_normal()
 		connect("at_goto", self, "set_mode_sentry")
 		$ai_tick.set_paused(false)
-		$sentryMode.play()
+		#$sentryMode.play()
 		return
 		
 	#goto mode
@@ -61,7 +64,7 @@ func do_modes():
 		set_speed_increasing()
 		connect("at_goto", self, "set_mode_sentry")
 		$ai_tick.set_paused(false)
-		$gotoMode.play()
+		#$gotoMode.play()
 		return
 	
 	#chase mode
@@ -70,6 +73,11 @@ func do_modes():
 		connect("at_goto", self, "midchase_player_check")
 		$ai_tick.set_paused(true)
 		$chaseMode.play()
+		
+		if $chase_music.playing == false:
+			$music.play("fade_in")
+			$chase_music.play()
+		
 		return
 	
 	# wait mode
@@ -233,7 +241,7 @@ func cleanup_sentry_points():
 	
 
 func playerview_small():
-	player_view_distance = 10
+	player_view_distance = 15
 	
 func playerview_big():
 	player_view_distance = 60
@@ -273,3 +281,13 @@ func _on_wait_timer_timeout():
 func _on_Area_area_entered(area):
 	if area.name == "chicken_rebuff":
 		set_mode_sentry()
+
+
+func _on_music_animation_finished(anim_name):
+	
+	if anim_name == "fade_out":
+		$chase_music.stop()
+
+
+func _on_frick_you_hunting_timeout():
+	set_mode_goto(player_pos)

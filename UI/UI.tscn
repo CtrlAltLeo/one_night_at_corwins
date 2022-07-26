@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/aodanTHeme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/UI.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/body_medium_break2.mp3" type="AudioStream" id=3]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -146,6 +147,10 @@ text = "Submit to the Chicken Dance"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="die" type="AudioStreamPlayer" parent="game_over"]
+stream = ExtResource( 3 )
+volume_db = -5.0
 
 [connection signal="pressed" from="game_over/tryagain" to="." method="_on_tryagain_pressed"]
 [connection signal="pressed" from="game_over/quit" to="." method="_on_quit_pressed"]

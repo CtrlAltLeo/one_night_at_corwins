@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/victory_sJDDywi.mp3-9bf3248e5e5e4def3e72ed0b7639dab9.mp3str"
+
+[deps]
+
+source_file="res://Sounds/victory_sJDDywi.mp3"
+dest_files=[ "res://.import/victory_sJDDywi.mp3-9bf3248e5e5e4def3e72ed0b7639dab9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

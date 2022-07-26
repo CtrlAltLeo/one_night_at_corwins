@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Underbase - Fallen Down.mp3-4b334e2ae109a6ee541164760dac3552.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Underbase - Fallen Down.mp3"
+dest_files=[ "res://.import/Underbase - Fallen Down.mp3-4b334e2ae109a6ee541164760dac3552.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

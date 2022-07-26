@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/new-super-mario-bros-wii.mp3-eaf90faf1571965b21fce0568307b7ec.mp3str"
+
+[deps]
+
+source_file="res://Sounds/new-super-mario-bros-wii.mp3"
+dest_files=[ "res://.import/new-super-mario-bros-wii.mp3-eaf90faf1571965b21fce0568307b7ec.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

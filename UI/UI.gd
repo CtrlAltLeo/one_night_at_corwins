@@ -38,6 +38,7 @@ func close_pause_menu():
 func game_over():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$game_over.show()
+	$game_over/die.play()
 	
 
 

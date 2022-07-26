@@ -6,7 +6,7 @@ var frozen = false
 
 var noise_level = 0
 
-var speed = 10
+var speed = 14
 
 var sanity = 100
 
@@ -47,6 +47,9 @@ onready var interactRaycast = $Camera/interact
 onready var camera = $Camera
 
 func _ready():
+	if do_heartbeat == false:
+		$Control/RichTextLabel.hide()
+	
 	mouse_sense = Globals.mouse_sense
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	do_heartbeat = Globals.spencer_mode
@@ -202,6 +205,13 @@ func set_cam_current():
 	
 	
 func charge_flashlight():
+	
+	$charge_sound_timeout.start(0)
+	
+	if $light_charge.playing == false:
+		$light_charge.play()
+		
+	
 	flashlight_on()
 	flashlight_active = true
 	
@@ -212,8 +222,9 @@ func charge_flashlight():
 	
 	flashlight_noise_level += 5
 	
-	if flashlight_noise_level > 60:
+	if flashlight_noise_level > 40:
 		print("too loud!")
+		$light_too_loud.play()
 		emit_signal("make_loud_noise", translation)
 	
 	$Camera/SpotLight.light_energy = flashlight_level * 0.03
@@ -266,6 +277,11 @@ func get_caught():
 
 
 func _on_grab_hitbox_body_entered(body):
+	
+	if hiding:
+		return
+		
+	
 	if body.name == "chicken":
 		get_caught()
 
@@ -290,16 +306,18 @@ func do_sanity():
 		emit_signal("make_soft_noise", self.translation)
 		
 	if sanity < 20:
+		$heartBeat.play()
 		emit_signal("make_loud_noise", self.translation)
 	
 
 func _on_heartbeat_timer_timeout():
-	
-	
-	
 	do_sanity()
 	
 func get_sanity_back():
 	sanity += 75
 	if sanity > 100:
 		sanity = 100
+
+
+func _on_charge_sound_timeout_timeout():
+	$light_charge.stop()

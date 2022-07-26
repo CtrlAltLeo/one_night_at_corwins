@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Endings/normalEnding.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Endings/wheel.png" type="Texture" id=2]
+[ext_resource path="res://Endings/image-removebg-preview (2).png" type="Texture" id=3]
+[ext_resource path="res://Endings/image-removebg-preview (13).png" type="Texture" id=4]
+[ext_resource path="res://Sounds/Underbase - Fallen Down.mp3" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "words2"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Cursed with knowledge about his \"friends,\" Aodan fled into the night, equally terrified by the Chicken and what his \"friends\" had created in just 17 days.", "Case File: #003
+Ending: Lore" ]
+}
+
+[node name="lore_ending" instance=ExtResource( 1 )]
+words = "words2"
+
+[node name="Chicken3-1164764249-removebg-preview" parent="." index="0"]
+position = Vector2( 1248.9, 153.927 )
+scale = Vector2( 0.417643, 0.417643 )
+
+[node name="image-removebg-preview (13)" type="Sprite" parent="Chicken3-1164764249-removebg-preview" index="0"]
+position = Vector2( -170.639, -161.866 )
+rotation = -0.333506
+scale = Vector2( 0.758456, 0.758456 )
+texture = ExtResource( 4 )
+
+[node name="WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview" parent="." index="1"]
+position = Vector2( 867.783, 166.469 )
+rotation = 0.237213
+scale = Vector2( 0.737965, 0.737965 )
+
+[node name="image-removebg-preview (2)" type="Sprite" parent="WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview" index="0"]
+position = Vector2( 31.7996, -96.3121 )
+rotation = 0.259245
+scale = Vector2( 0.424404, 0.416687 )
+texture = ExtResource( 3 )
+
+[node name="wheel" type="Sprite" parent="WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview" index="1"]
+position = Vector2( 43.5901, 75.7315 )
+rotation = 0.134964
+scale = Vector2( 0.337513, 0.348461 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/words2 = SubResource( 1 )
+
+[node name="Label" parent="." index="3"]
+margin_left = 4.18982
+margin_top = 6.68419
+margin_right = 1021.19
+margin_bottom = 212.684
+text = "Cursed with knowledge about his \"friends,\" Aodan fled into the night, equally terrified by the Chicken and what his \"friends\" had created in just 17 days."
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 5 )

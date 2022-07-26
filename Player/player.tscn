@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/player.gd" type="Script" id=1]
 [ext_resource path="res://UI/crosshair.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/523087__magnuswaker__gun-hammer-click.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/136779__davidbain__wind-up-torch.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/heartbeatloop.mp3" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.76821
@@ -33,8 +36,8 @@ collide_with_bodies = false
 [node name="SpotLight" type="SpotLight" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.631317, 0.211347 )
 light_energy = 3.0
-spot_range = 21.536
-spot_angle = 33.1268
+spot_range = 45.0021
+spot_angle = 32.883
 
 [node name="Control" type="Control" parent="."]
 anchor_left = 0.5
@@ -63,10 +66,13 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-margin_left = -2.0
-margin_top = 37.0
-margin_right = 38.0
-margin_bottom = 77.0
+margin_left = 488.516
+margin_top = -282.902
+margin_right = 528.516
+margin_bottom = -242.902
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262414, 0 )
@@ -75,6 +81,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="flashlight_battery" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="grab_hitbox" type="Area" parent="."]
@@ -90,7 +97,23 @@ wait_time = 0.1
 wait_time = 5.0
 autostart = true
 
+[node name="light_too_loud" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="light_charge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="heartBeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+
+[node name="charge_sound_timeout" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="flashlight_battery" to="." method="_on_flashlight_battery_timeout"]
 [connection signal="body_entered" from="grab_hitbox" to="." method="_on_grab_hitbox_body_entered"]
 [connection signal="timeout" from="sanity_time" to="." method="_on_sanity_time_timeout"]
 [connection signal="timeout" from="heartbeat_timer" to="." method="_on_heartbeat_timer_timeout"]
+[connection signal="timeout" from="charge_sound_timeout" to="." method="_on_charge_sound_timeout_timeout"]
