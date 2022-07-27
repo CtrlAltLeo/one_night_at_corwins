@@ -27,6 +27,7 @@ func _process(delta):
 		for b in $hitbox.get_overlapping_bodies():
 			in_flight = false
 			emit_signal("make_noise", self.translation)
+			$FX.play()
 			print("making noise")
 
 

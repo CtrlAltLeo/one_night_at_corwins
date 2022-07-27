@@ -1332,7 +1332,7 @@ node_connections = [ "output", 0, "Animation" ]
 [sub_resource type="BoxShape" id=15]
 extents = Vector3( 1.59136, 1.93177, 1.90736 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 resource_name = "fade_in"
 tracks/0/type = "value"
 tracks/0/path = NodePath("chase_music:volume_db")
@@ -1347,8 +1347,7 @@ tracks/0/keys = {
 "values": [ -40.0, 5.0 ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath("chase_music:volume_db")
 tracks/0/interp = 1
@@ -1381,6 +1380,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 0 )
 
 [node name="ai_tick" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="sentryMode" type="AudioStreamPlayer" parent="."]
@@ -1664,8 +1664,8 @@ stream = ExtResource( 9 )
 volume_db = -40.0
 
 [node name="music" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 17 )
-anims/fade_out = SubResource( 16 )
+anims/fade_in = SubResource( 16 )
+anims/fade_out = SubResource( 17 )
 
 [node name="frick_you_hunting" type="Timer" parent="."]
 wait_time = 40.0

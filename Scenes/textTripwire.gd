@@ -5,6 +5,8 @@ var triggered = false
 
 signal text_wire(text, spicy)
 
+signal trip
+
 var monolog = ""
 
 export(String) var text
@@ -28,3 +30,5 @@ func _on_Area_body_entered(body):
 		
 		monolog.new_message(text, spicy)
 		triggered = true
+		
+		emit_signal("trip")

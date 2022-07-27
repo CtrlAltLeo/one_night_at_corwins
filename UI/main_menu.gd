@@ -11,7 +11,7 @@ func _on_lightningTimer_timeout():
 
 
 func _on_play_pressed():
-	get_tree().change_scene("res://Maps/world.tscn")
+	get_tree().change_scene("res://Endings/Beginning.tscn")
 
 
 func _on_options_pressed():

@@ -5,8 +5,8 @@ extends "res://Scenes/interactable.gd"
 
 func _on_theGolf_on_interact_success():
 	
-	if Globals.lore_points >= 8:
-		get_tree().change_scene("lore_ending")
+	if Globals.lore_points >= 6:
+		get_tree().change_scene("res://Endings/lore_ending.tscn")
 		return
 	
 	if inventory.get_parts().size() == 3:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/585243__lesaucisson__metal-blade-friction-6.mp3-e93c2470842bc06aa0d38f94d2bd3a7a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/item_sounds/585243__lesaucisson__metal-blade-friction-6.mp3"
+dest_files=[ "res://.import/585243__lesaucisson__metal-blade-friction-6.mp3-e93c2470842bc06aa0d38f94d2bd3a7a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

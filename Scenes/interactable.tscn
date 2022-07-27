@@ -6,3 +6,7 @@
 script = ExtResource( 1 )
 
 [node name="hitbox" type="Area" parent="."]
+
+[node name="FX" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="FX" to="." method="_on_FX_finished"]

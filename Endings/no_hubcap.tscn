@@ -67,3 +67,4 @@ However, the Golf is missing a hubcap, and for the rest of eternity he will neve
 
 [node name="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource( 3 )
+volume_db = -15.0

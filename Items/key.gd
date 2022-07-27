@@ -16,6 +16,7 @@ func _ready():
 
 
 func _on_key_on_interact_success():
+	$FX.play()
 	#noise_maker_path.make_loud_noise(self.translation)
 	inventory.give_key(key_id, texture)
 	monolog.new_message("You got a key!")

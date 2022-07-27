@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/180158__roland-katarn__munching-sound.mp3-846912d941412cf275e2975d7bf56f00.mp3str"
+
+[deps]
+
+source_file="res://Sounds/item_sounds/180158__roland-katarn__munching-sound.mp3"
+dest_files=[ "res://.import/180158__roland-katarn__munching-sound.mp3-846912d941412cf275e2975d7bf56f00.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

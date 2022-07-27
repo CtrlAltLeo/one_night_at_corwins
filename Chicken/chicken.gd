@@ -7,7 +7,7 @@ var found_sentry_points = []
 
 var sentry_points = []
 
-var speed = 7
+var speed = 10
 
 var mode = 0 #patrol, goto, chase
 
@@ -46,6 +46,7 @@ func do_modes():
 	emit_signal("mode_change")
 	
 	disconnect("at_goto", self, "midchase_player_check")
+	disconnect("at_goto", self, "set_mode_wait")
 	disconnect("at_goto", self, "set_mode_sentry")
 
 	#patrol mode
@@ -54,7 +55,7 @@ func do_modes():
 		$music.play("fade_out")
 		
 		set_speed_normal()
-		connect("at_goto", self, "set_mode_sentry")
+		connect("at_goto", self, "set_mode_wait")
 		$ai_tick.set_paused(false)
 		#$sentryMode.play()
 		return
@@ -83,6 +84,7 @@ func do_modes():
 	# wait mode
 	if mode == 3:
 		$ai_tick.set_paused(false)
+		
 		
 
 func init_sentry_points():
@@ -248,7 +250,7 @@ func playerview_big():
 	
 
 func set_speed_normal():
-	speed = 7
+	speed = 10
 	
 func set_speed_increasing():
 	print("Faster faster!")
@@ -278,9 +280,10 @@ func _on_wait_timer_timeout():
 	set_mode_sentry()
 
 
-func _on_Area_area_entered(area):
+func _on_Area_area_entered(area): #Door is area
 	if area.name == "chicken_rebuff":
-		set_mode_sentry()
+		set_mode_goto(player_pos)
+		set_speed_increasing()
 
 
 func _on_music_animation_finished(anim_name):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/player.gd" type="Script" id=1]
 [ext_resource path="res://UI/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/523087__magnuswaker__gun-hammer-click.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/136779__davidbain__wind-up-torch.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/heartbeatloop.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/item_sounds/217493__vkproduktion__switch-03.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.76821
@@ -70,6 +71,7 @@ margin_left = 488.516
 margin_top = -282.902
 margin_right = 528.516
 margin_bottom = -242.902
+text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -81,7 +83,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="flashlight_battery" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [node name="grab_hitbox" type="Area" parent="."]
@@ -102,7 +104,7 @@ stream = ExtResource( 3 )
 
 [node name="light_charge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="heartBeat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -111,6 +113,10 @@ volume_db = -5.0
 [node name="charge_sound_timeout" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="flashglith" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
 
 [connection signal="timeout" from="flashlight_battery" to="." method="_on_flashlight_battery_timeout"]
 [connection signal="body_entered" from="grab_hitbox" to="." method="_on_grab_hitbox_body_entered"]

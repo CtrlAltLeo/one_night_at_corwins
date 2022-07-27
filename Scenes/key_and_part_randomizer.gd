@@ -9,18 +9,26 @@ var key_names = ["key_green", "key_yellow", "key_red", "key_blue", "key_purple"]
 var part = load("res://Items/part.tscn")
 var key = load("res://Items/key.tscn")
 
+var pos_locs = []
 
-	
 func spawn_parts():
 	for i in range(3):
 		
 		var pos = $part_spawns.get_child(int(rand_range(0, $part_spawns.get_child_count())))
+		
+		while pos.translation in pos_locs:
+			 pos = $part_spawns.get_child(int(rand_range(0, $part_spawns.get_child_count())))
+		
+		
+		pos_locs.append(pos.translation)
 		
 		var new_part = part.instance()
 		new_part.part_name = part_names[i]
 		new_part.part_texture = part_textures[i]
 		new_part.translation = pos.translation
 		print(i)
+
+		pos.queue_free()
 
 		get_parent().add_child(new_part)
 		

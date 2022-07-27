@@ -95,11 +95,25 @@ __meta__ = {
 }
 
 [node name="lore" type="Label" parent="pause_menu"]
-margin_left = -303.231
-margin_top = 105.212
-margin_right = -223.231
-margin_bottom = 202.212
+margin_left = -303.0
+margin_top = 105.0
+margin_right = -143.0
+margin_bottom = 299.0
 text = "Lore"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lore2" type="Label" parent="pause_menu/lore"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -97.0
+margin_right = 50.0
+text = "0 / 7"
 __meta__ = {
 "_edit_use_anchors_": false
 }

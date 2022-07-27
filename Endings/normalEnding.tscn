@@ -4,11 +4,11 @@
 [ext_resource path="res://Endings/WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview.png" type="Texture" id=2]
 [ext_resource path="res://Endings/normalEnding.gd" type="Script" id=3]
 [ext_resource path="res://UI/aodanTHeme.tres" type="Theme" id=4]
-[ext_resource path="res://Sounds/victory_sJDDywi.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/19-you-win.mp3" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "carMove"
-length = 5.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WHITE_cc_2021VWC230049_01_1280_2T2T-1879095217-removebg-preview:position")
 tracks/0/interp = 1
@@ -132,6 +132,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -10.0
 autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

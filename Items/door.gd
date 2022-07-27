@@ -12,11 +12,13 @@ func _ready():
 
 func _on_door_on_interact_success():
 	
+	noise_maker_path.make_loud_noise(self.translation)
+	
 	if key_id > 0:
 		if inventory.has_key(key_id):
 			queue_free()
 		else:
-			noise_maker_path.make_loud_noise(self.translation)
+			
 			monolog.new_message("You don't have the right key!")
 			
 	else:

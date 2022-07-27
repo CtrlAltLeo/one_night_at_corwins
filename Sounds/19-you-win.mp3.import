@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/19-you-win.mp3-603cb1039f931473c735ac8be4ed0c92.mp3str"
+
+[deps]
+
+source_file="res://Sounds/19-you-win.mp3"
+dest_files=[ "res://.import/19-you-win.mp3-603cb1039f931473c735ac8be4ed0c92.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

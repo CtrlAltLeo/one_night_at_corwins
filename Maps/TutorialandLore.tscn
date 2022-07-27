@@ -1,0 +1,129 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/food.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/viewable_object.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/key.tscn" type="PackedScene" id=6]
+[ext_resource path="res://modesl/wallsMeshLib.meshlib" type="MeshLibrary" id=7]
+[ext_resource path="res://modesl/posters/WinRAR_POSTER4.png" type="Texture" id=8]
+[ext_resource path="res://Items/desk_hiding_place.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/monologSystem.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/icons/Red_Key_1.png" type="Texture" id=12]
+[ext_resource path="res://Maps/TutorialandLore.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/textTripwire.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Sounds/Rain On Rooftop.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/CHICKEN_1MP3.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Scenes/NoiseSystem.tscn" type="PackedScene" id=17]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="Environment" id=2]
+
+[node name="TutorialandLore" type="Spatial"]
+script = ExtResource( 13 )
+
+[node name="door" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1496, -1.19923, 10.1309 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70.7301, 1.47613, 57.0064 )
+
+[node name="Inventory" parent="." instance=ExtResource( 5 )]
+
+[node name="key" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -67.4425, 4.57434, 8.61433 )
+key_id = 3
+texture = ExtResource( 12 )
+
+[node name="viewable_object" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58.1865, 5.00489, 6.21149 )
+image = ExtResource( 8 )
+view_text = "\"Wow, a Game Jam!!\""
+
+[node name="food" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0159, 2.46584, 14.9483 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 7 )
+cell_size = Vector3( 3, 3, 3 )
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( 65513, 2, 1441793, 65514, 2, 1441793, 65515, 2, 1441793, 65516, 2, 1441793, 65517, 2, 1441793, 65518, 2, 1441793, 65519, 2, 1441793, 65520, 2, 1441793, 65521, 2, 1441793, 65523, 2, 1441793, 65524, 2, 1441793, 65525, 2, 1441793, 65526, 2, 1441793, 65527, 2, 1441793, 65528, 2, 1441793, 65530, 2, 1441793, 65512, 3, 1, 65531, 3, 1, 65521, 4, 1048577, 65523, 4, 1048577, 65524, 4, 1048577, 65525, 4, 1048577, 65526, 4, 1048577, 65527, 4, 1048577, 65528, 4, 1048577, 65531, 4, 1, 65512, 5, 1, 65520, 5, 1, 65529, 5, 655361, 65531, 5, 1, 65515, 6, 1048577, 65516, 6, 1048577, 65517, 6, 1048577, 65518, 6, 1048577, 65519, 6, 1048577, 65512, 7, 1, 65514, 7, 1, 65529, 7, 655361, 65531, 7, 1, 65512, 8, 1, 65514, 8, 1, 65529, 8, 655361, 65531, 8, 1, 65512, 9, 1, 65514, 9, 1, 65529, 9, 655361, 65531, 9, 1, 65512, 10, 1, 65514, 10, 1, 65529, 10, 655361, 65531, 10, 1, 1, 11, 1048577, 2, 11, 1048577, 3, 11, 1048577, 4, 11, 1048577, 5, 11, 1048577, 6, 11, 1048577, 7, 11, 1048577, 8, 11, 655361, 65531, 11, 1, 1, 12, 655361, 65512, 12, 1, 65514, 12, 1, 65529, 12, 655361, 65531, 12, 1, 8, 13, 655361, 65511, 13, 1048577, 65515, 13, 1048577, 65529, 13, 655361, 65531, 13, 1, 1, 14, 655361, 8, 14, 655361, 65510, 14, 1, 65516, 14, 1, 65529, 14, 655361, 65531, 14, 1, 0, 15, 1441793, 65516, 15, 1, 65532, 15, 1441793, 65533, 15, 1441793, 65534, 15, 1441793, 65535, 15, 1441793, 8, 16, 655361, 65510, 16, 1, 65529, 16, 655361, 8, 17, 655361, 65516, 17, 1, 65529, 17, 655361, 0, 18, 1441793, 8, 18, 655361, 65510, 18, 1, 65516, 18, 1, 65530, 18, 1441793, 65531, 18, 1441793, 65532, 18, 1441793, 65533, 18, 1441793, 65534, 18, 1441793, 1, 19, 1, 8, 19, 655361, 65516, 19, 1, 1, 20, 1, 8, 20, 655361, 65510, 20, 1, 65516, 20, 1, 2, 21, 1441793, 3, 21, 1441793, 4, 21, 1441793, 5, 21, 1441793, 6, 21, 1441793, 7, 21, 1441793, 65511, 21, 1048577, 65513, 21, 1048577, 65515, 21, 1048577 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="GridMap2" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+mesh_library = ExtResource( 7 )
+cell_size = Vector3( 3, 3, 3 )
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( 65513, 2, 1441793, 65514, 2, 1441793, 65515, 2, 1441793, 65516, 2, 1441793, 65517, 2, 1441793, 65518, 2, 1441793, 65519, 2, 1441793, 65520, 2, 1441793, 65521, 2, 1441793, 65523, 2, 1441793, 65524, 2, 1441793, 65525, 2, 1441793, 65526, 2, 1441793, 65527, 2, 1441793, 65528, 2, 1441793, 65530, 2, 1441793, 65512, 3, 1, 65531, 3, 1, 65521, 4, 1048577, 65523, 4, 1048577, 65524, 4, 1048577, 65525, 4, 1048577, 65526, 4, 1048577, 65527, 4, 1048577, 65528, 4, 1048577, 65531, 4, 1, 65512, 5, 1, 65520, 5, 1, 65529, 5, 655361, 65531, 5, 1, 65515, 6, 1048577, 65516, 6, 1048577, 65517, 6, 1048577, 65518, 6, 1048577, 65519, 6, 1048577, 65512, 7, 1, 65514, 7, 1, 65529, 7, 655361, 65531, 7, 1, 65512, 8, 1, 65514, 8, 1, 65529, 8, 655361, 65531, 8, 1, 65512, 9, 1, 65514, 9, 1, 65529, 9, 655361, 65531, 9, 1, 65512, 10, 1, 65514, 10, 1, 65529, 10, 655361, 65531, 10, 1, 1, 11, 1048577, 2, 11, 1048577, 3, 11, 1048577, 4, 11, 1048577, 5, 11, 1048577, 6, 11, 1048577, 7, 11, 1048577, 8, 11, 655361, 65531, 11, 1, 1, 12, 655361, 65512, 12, 1, 65514, 12, 1, 65529, 12, 655361, 65531, 12, 1, 8, 13, 655361, 65511, 13, 1048577, 65515, 13, 1048577, 65529, 13, 655361, 65531, 13, 1, 1, 14, 655361, 8, 14, 655361, 65510, 14, 1, 65516, 14, 1, 65529, 14, 655361, 65531, 14, 1, 0, 15, 1441793, 65516, 15, 1, 65532, 15, 1441793, 65533, 15, 1441793, 65534, 15, 1441793, 65535, 15, 1441793, 8, 16, 655361, 65510, 16, 1, 65529, 16, 655361, 8, 17, 655361, 65516, 17, 1, 65529, 17, 655361, 0, 18, 1441793, 8, 18, 655361, 65510, 18, 1, 65516, 18, 1, 65530, 18, 1441793, 65531, 18, 1441793, 65532, 18, 1441793, 65533, 18, 1441793, 65534, 18, 1441793, 1, 19, 1, 8, 19, 655361, 65516, 19, 1, 1, 20, 1, 8, 20, 655361, 65510, 20, 1, 65516, 20, 1, 2, 21, 1441793, 3, 21, 1441793, 4, 21, 1441793, 5, 21, 1441793, 6, 21, 1441793, 7, 21, 1441793, 65511, 21, 1048577, 65513, 21, 1048577, 65515, 21, 1048577 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 86.092, 0, 0, 0, 86.092, 0, 0, 0, 86.092, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="desk_hiding_place" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -68.1822, 1.09742, 7.32764 )
+
+[node name="desk_hiding_place2" parent="." instance=ExtResource( 9 )]
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -52.3669, 1.09742, 15.5841 )
+
+[node name="monologSystem" parent="." instance=ExtResource( 10 )]
+
+[node name="UI" parent="." instance=ExtResource( 11 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="textTripwire" parent="." instance=ExtResource( 14 )]
+transform = Transform( 0.0119378, 0, -0.999929, 0, 1, 0, 0.999929, 0, 0.0119378, -68.2612, 2, 18.6747 )
+text = "Press E to interact with objects."
+
+[node name="textTripwire2" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.999929, 0, -0.0119377, 0, 1, 0, 0.0119377, 0, -0.999929, -24.4075, 2, 7.72937 )
+text = "Press R to turn you flashlight On and Off."
+
+[node name="textTripwire3" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.0511332, 0, 0.998692, 0, 1, 0, -0.998692, 0, -0.0511332, -17.1889, 2, 33.1502 )
+text = "Press F to charge your flashlight."
+
+[node name="textTripwire4" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.996504, 0, 0.0835388, 0, 1, 0, -0.0835388, 0, -0.996504, -14.154, 2, 48.508 )
+text = "Press TAB to pause the game."
+
+[node name="textTripwire5" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.996504, 0, 0.0835388, 0, 1, 0, -0.0835388, 0, -0.996504, 4.73593, 2, 48.508 )
+text = "\"What's all this then?\""
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+autoplay = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0018, 9.29105, 51.0074 )
+stream = ExtResource( 16 )
+unit_db = 5.0
+unit_size = 3.0
+
+[node name="NoiseSystem" parent="." instance=ExtResource( 17 )]
+
+[connection signal="pause" from="player" to="UI" method="open_pause_menu"]
+[connection signal="unpause" from="player" to="UI" method="close_pause_menu"]
+[connection signal="trip" from="textTripwire5" to="." method="_on_textTripwire5_trip"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_AudioStreamPlayer3D_finished"]

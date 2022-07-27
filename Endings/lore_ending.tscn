@@ -65,3 +65,4 @@ text = "Cursed with knowledge about his \"friends,\" Aodan fled into the night, 
 
 [node name="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 5 )
+volume_db = -15.0

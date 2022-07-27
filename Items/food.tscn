@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/food.gd" type="Script" id=2]
 [ext_resource path="res://modesl/doughnut/doughnut.glb" type="PackedScene" id=3]
+[ext_resource path="res://Sounds/item_sounds/180158__roland-katarn__munching-sound.mp3" type="AudioStream" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.579848, 0.451695, 0.65213 )
@@ -15,5 +16,8 @@ shape = SubResource( 1 )
 
 [node name="doughnut" parent="." index="1" instance=ExtResource( 3 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="FX" parent="." index="2"]
+stream = ExtResource( 4 )
 
 [connection signal="on_interact_success" from="." to="." method="_on_food_on_interact_success"]

@@ -22,6 +22,8 @@ func open_pause_menu():
 		text.texture = load(p)
 		$pause_menu/part_items.add_child(text)
 	
+	$pause_menu/lore/lore2.text = str(Globals.lore_points) + " / 7"
+	
 	$pause_menu.show()
 	
 func close_pause_menu():
@@ -39,6 +41,7 @@ func game_over():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$game_over.show()
 	$game_over/die.play()
+	Globals.tut_played = true
 	
 
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/485108__joao-janz__keys-jingling-1-3.wav-993918fac749cbe0ca5f6a33ede93049.sample"
+
+[deps]
+
+source_file="res://Sounds/item_sounds/485108__joao-janz__keys-jingling-1-3.wav"
+dest_files=[ "res://.import/485108__joao-janz__keys-jingling-1-3.wav-993918fac749cbe0ca5f6a33ede93049.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

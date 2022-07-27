@@ -12,6 +12,7 @@ extents = Vector3( 1.82128, 0.669916, 1 )
 [node name="CollisionShape" parent="hitbox" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035682, 0.0203693, 0.990156 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="MeshInstance" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 0.177271, 0, 0, 0, 1, -2.17163, 2.78556, 2.49171 )

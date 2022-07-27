@@ -2,6 +2,7 @@ extends Spatial
 
 
 func _ready():
+	Globals.lore_points = 0
 	spawn_parts()
 	$key_and_part_randomizer.spawn_keys()
 

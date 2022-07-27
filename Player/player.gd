@@ -13,6 +13,7 @@ var sanity = 100
 var flashlight_level = 100
 var flashlight_noise_level = 0
 var flashlight_active = true
+var flashlight_ping = false
 
 var hiding = false
 
@@ -47,12 +48,17 @@ onready var interactRaycast = $Camera/interact
 onready var camera = $Camera
 
 func _ready():
-	if do_heartbeat == false:
-		$Control/RichTextLabel.hide()
+	
 	
 	mouse_sense = Globals.mouse_sense
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	do_heartbeat = Globals.spencer_mode
+	
+	if do_heartbeat == false:
+		$Control/RichTextLabel.hide()
+		
+	if do_heartbeat:
+		$flashlight_battery.wait_time = 3
 	
 func _input(event):
 	
@@ -85,7 +91,7 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_ENTER):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
-	get_interaction_object()
+	#get_interaction_object()
 	
 	if Input.is_action_just_pressed("E"):
 		interact()
@@ -95,6 +101,8 @@ func _process(delta):
 		charge_flashlight()
 		
 	if Input.is_action_just_pressed("R"):
+		
+		$flashglith.play()
 		if flashlight_active:
 			flashlight_off()
 		else:
@@ -156,7 +164,13 @@ func get_interaction_object():
 	
 func interact():
 #	print("click")
+	get_interaction_object()
+
 	emit_signal("init_interact")
+	
+	if viewed_object != null:
+		disconnect("init_interact", get_node(viewed_object), "interact")
+		viewed_object = null
 
 	
 	
@@ -212,8 +226,8 @@ func charge_flashlight():
 		$light_charge.play()
 		
 	
-	flashlight_on()
-	flashlight_active = true
+	#flashlight_on()
+	#flashlight_active = true
 	
 	flashlight_level += int(rand_range(5,10))
 	
@@ -222,12 +236,14 @@ func charge_flashlight():
 	
 	flashlight_noise_level += 5
 	
-	if flashlight_noise_level > 40:
+	if flashlight_noise_level > rand_range(20, 30) and !flashlight_ping:
 		print("too loud!")
 		$light_too_loud.play()
 		emit_signal("make_loud_noise", translation)
+		flashlight_ping = true
 	
-	$Camera/SpotLight.light_energy = flashlight_level * 0.03
+	if flashlight_active:
+		$Camera/SpotLight.light_energy = flashlight_level * 0.03
 	
 func update_flashlight():
 	$Camera/SpotLight.light_energy = flashlight_level * 0.03
@@ -266,12 +282,14 @@ func player_speed_fast():
 func _on_flashlight_battery_timeout():
 	if flashlight_active:
 		update_flashlight()
+		flashlight_ping = false
 		
 		
 func get_caught():
 	freeze()
 	print("they got me!")
 	emit_signal("player_caught")
+	
 	
 	
 
@@ -314,7 +332,7 @@ func _on_heartbeat_timer_timeout():
 	do_sanity()
 	
 func get_sanity_back():
-	sanity += 75
+	sanity += 50
 	if sanity > 100:
 		sanity = 100
 
