@@ -26,9 +26,9 @@ func _process(delta):
 
 func _on_viewable_object_on_interact_success():
 	monolog.new_message(view_text)
-	if is_lore:
-		$FX.play()
+	
 	
 	if is_lore and lore_used == false:
 		lore_used = true
 		Globals.lore_points += 1
+		$FX.play()

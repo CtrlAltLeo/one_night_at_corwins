@@ -44,6 +44,7 @@ func pickup():
 	player_holding = true
 	player_path.player_speed_slow()
 	player_path.connect("init_interact", self, "throw")
+	$hitbox.monitoring = false
 	
 func throw():
 	player_holding = false
@@ -53,3 +54,4 @@ func throw():
 	dir =Vector3(0,0,-1).rotated(Vector3(1,0,0), player_path.camera.rotation.x) #+ Vector3(0,0,-1).rotated(Vector3(0,1,0), player_path.rotation.y) + 
 	dir = dir.rotated(Vector3(0,1,0), player_path.rotation.y)
 	in_flight = true
+	$hitbox.monitoring = true

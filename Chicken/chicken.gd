@@ -8,6 +8,7 @@ var found_sentry_points = []
 var sentry_points = []
 
 var speed = 10
+var base_speed = 10
 
 var mode = 0 #patrol, goto, chase
 
@@ -32,8 +33,14 @@ signal mode_change
 signal catch_player
 
 func _ready():
+	self.translation = Vector3(69, 1, -62)
+	
 	init_sentry_points()
 	set_mode_sentry()
+	
+	if Globals.spencer_mode:
+		base_speed = 15
+		speed = base_speed
 
 func _process(delta):
 	$RichTextLabel.text = str(mode)
@@ -128,6 +135,11 @@ func next_path():
 	
 	
 func update_target():
+	
+	if path.size() == 0:
+		set_mode_sentry()
+		return
+	
 	target = path[pathRank]
 
 
@@ -250,7 +262,7 @@ func playerview_big():
 	
 
 func set_speed_normal():
-	speed = 10
+	speed = base_speed
 	
 func set_speed_increasing():
 	print("Faster faster!")
@@ -282,8 +294,14 @@ func _on_wait_timer_timeout():
 
 func _on_Area_area_entered(area): #Door is area
 	if area.name == "chicken_rebuff":
-		set_mode_goto(player_pos)
-		set_speed_increasing()
+		print("stuck")
+		set_mode_sentry()
+#		var point_choice = int(rand_range(0,sentry_points.size()))
+#
+#		var sentry_pos = sentry_points[point_choice]
+#		self.translation = Vector3(sentry_pos.x, self.translation.y, sentry_pos.z)
+		
+
 
 
 func _on_music_animation_finished(anim_name):
